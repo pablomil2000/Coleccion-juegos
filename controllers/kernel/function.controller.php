@@ -246,5 +246,30 @@ class FunctionCtrl
 
     return $text;
   }
+
+  public function encript($string, $method = 'sha256')
+  {
+    switch ($method) {
+      case 'sha256':
+        $str = hash('sha256', $string);
+        break;
+      case 'md5':
+        $str = hash('md5', $string);
+        break;
+      case 'sha1':
+        $str = hash('sha1', $string);
+        break;
+      case 'sha512':
+        $str = hash('sha512', $string);
+        break;
+
+
+      default:
+        $str = hash('sha256', $string);
+        break;
+
+    }
+    return $str;
+  }
 }
 

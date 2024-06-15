@@ -2,20 +2,22 @@
 
 $Funciones = new FunctionCtrl();
 $Validate = new ValidateCtrl();
+$userCtrl = new userCtrl('users');
 
 $Funciones->isGuest();
 
 $error = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $email = $Validate->vltEmail($_POST['email']);
-  $password = $_POST['password'];
+  $password = $userCtrl->handlingPassword($_POST['password']);
+  $preuser = $userCtrl->getBy(['email' => $email])[0];
+  // $password = $_POST['password'];
 
   if ($email != '' && $password != '') {
 
-    $userCtrl = new userCtrl('users');
     $user = $userCtrl->login($email, $password);
-
-    if ($user['token'] === '') {
+    var_dump($preuser);
+    if ($preuser['token'] == '') {
       if ($user) {
         $_SESSION['user'] = $user;
         header('Location: ./');
@@ -23,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = 'Usuario o contraseña incorrectos';
       }
     } else {
-      header('Location: ./resetpassword');
+      header('Location: ./resetpassword/' . $preuser['token'] . '/');
     }
 
 

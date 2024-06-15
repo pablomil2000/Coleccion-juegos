@@ -21,4 +21,12 @@ class userCtrl extends CrudController
     }
     return false;
   }
+
+  public function handlingPassword($password)
+  {
+    $method = 'sha256';
+    $funcionesCtrl = new FunctionCtrl();
+    return $funcionesCtrl->encript($password, $method);
+  }
+
 }
