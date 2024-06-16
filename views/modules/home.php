@@ -1,5 +1,9 @@
 <?php
 
+$FuncionesCtrl = new FunctionCtrl();
+$FuncionesCtrl->isLogin();
+
+
 // Todo: Compoent code here
 
 // $category = new CategoryController('categorias');

@@ -1,5 +1,8 @@
 <?php
 
+$FuncionesCtrl = new FunctionCtrl();
+$FuncionesCtrl->isLogin();
+
 // var_dump($_GET['page']);
 $page = 1;
 if (isset($_GET['page'])) {

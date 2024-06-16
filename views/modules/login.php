@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // var_dump($preuser);
     if ($preuser['token'] == '') {
       if ($user) {
+        $userCtrl->update($user['id'], ['lastLogin' => date('Y-m-d H:i:s')]);
         $_SESSION['user'] = $user;
         header('Location: ./');
       } else {

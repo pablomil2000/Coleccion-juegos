@@ -1,6 +1,8 @@
 <?php
 
-$Funciones = new FunctionCtrl();
+$FuncionesCtrl = new FunctionCtrl();
+$FuncionesCtrl->isLogin();
+
 $Validate = new ValidateCtrl();
 
 

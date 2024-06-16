@@ -1,6 +1,9 @@
 <?php
 
-$Funciones = new FunctionCtrl();
+$FuncionesCtrl = new FunctionCtrl();
+$FuncionesCtrl->isLogin();
+
+
 $url = explode('/', $_GET['url']);
 // var_dump($url);
 $catgoria = $url[1];

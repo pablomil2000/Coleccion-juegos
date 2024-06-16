@@ -1,4 +1,6 @@
 <?php
+$FuncionesCtrl = new FunctionCtrl();
+$FuncionesCtrl->isLogin();
 
 $companyCtrl = new companyCtrl('companies');
 

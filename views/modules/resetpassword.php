@@ -6,7 +6,8 @@ $error = false;
 $url = explode('/', $_GET['url']);
 $hash = $url[1];
 
-$Funciones = new FunctionCtrl();
+$FuncionesCtrl = new FunctionCtrl();
+$FuncionesCtrl->isGuest();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
