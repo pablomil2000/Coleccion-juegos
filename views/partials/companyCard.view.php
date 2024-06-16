@@ -2,7 +2,7 @@
 <div class="col-md-6 col-lg-3 mb-5">
   <div class="card-game game-item mx-auto" data-bs-toggle="modal" data-bs-target="#gameModal<?= $company['id'] ?>">
     <div class="game-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-      <div class="game-item-caption-content text-center text-white">
+      <div class="game-item-caption-content text-center">
         <?= $company['nombre'] ?>
       </div>
     </div>
@@ -40,9 +40,9 @@
                     <div class="divider-custom-line"></div>
                   </div>
                   <!-- game Modal - Text-->
-                  <p class="mb-4 text-secondary text-justify">
+                  <div class="text-justify text-secondary">
                     <?= $company['historia'] ?>
-                  </p>
+                  </div>
                 </div>
               </div>
               <div class="col-12 m-2">

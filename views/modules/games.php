@@ -1,11 +1,18 @@
 <?php
 
 // var_dump($_GET['page']);
-
 $page = 1;
 if (isset($_GET['page'])) {
   $page = $_GET['page'];
 }
+
+$search = '%';
+if (isset($_GET['search'])) {
+  $search .= $_GET['search'];
+}
+$search .= '%';
+
+
 
 $Funciones = new FunctionCtrl();
 $Validate = new ValidateCtrl();
@@ -14,8 +21,7 @@ $plataformaCtrl = new plataformaCtrl('plataformas');
 
 $gameCtrl = new gameCtrl('games');
 $mygames = new myGamesCtrl('mygames');
-$pagination = new paginationCtrl('games', 12, $page);
-
+$pagination = new paginationCtrl('games', 12, $page, ['titulo' => $search]);
 $Funciones->isLogin();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -54,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $plataformas = $plataformaCtrl->getAll();
 
+// TODO legacy game loader
 // $games = $gameCtrl->order(
 //   [
 //     'column' => 'titulo',
@@ -61,10 +68,14 @@ $plataformas = $plataformaCtrl->getAll();
 //   ]
 // );
 
-$games = $pagination->rawSql('', 'ORDER BY titulo ASC', 'LIMIT ' . $pagination->porPag . ' OFFSET ' . $pagination->porPag * $pagination->page);
-// var_dump($games);
+// var_dump($pagination->getLimit());
+try {
+  $games = $pagination->rawSql('where titulo like"' . $search . '"', 'ORDER BY titulo ASC', $pagination->getLimit());
+} catch (\Throwable $th) {
+  header('Location: ' . $GLOBALS['RouteCtrl']->domain . '404');
+}
 
-
+// eliminar primer y ultimo caracter
+$search = str_replace('%', '', $search);
 
 include_once ('views/partials/games.view.php');
-// var_dump($collections);

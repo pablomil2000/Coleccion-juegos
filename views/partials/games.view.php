@@ -22,6 +22,29 @@
           <div class="divider-custom-icon"><i class="fa-solid fa-gamepad"></i></div>
           <div class="divider-custom-line"></div>
         </div>
+
+        <form method="get">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <!-- Search -->
+                <input type="text" class="form-control" name="search" placeholder="Buscar..." value="<?= $search ?>">
+
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary text-justify">Filtrar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="divider-custom">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fa-solid fa-gamepad"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
         <!-- Games Grid Items-->
         <div class="card-container row justify-content-center">
           <?php

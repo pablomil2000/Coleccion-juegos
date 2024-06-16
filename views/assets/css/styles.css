@@ -12970,3 +12970,9 @@ html {
   max-height: 20vh;
   min-height: 20vh;
 }
+
+/* Todos los elementos dentro de text-justify estaran justificados */
+.text-justify {
+  text-align: justify !important;
+  color: #000 !important;
+}

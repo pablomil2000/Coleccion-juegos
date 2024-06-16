@@ -55,7 +55,7 @@ switch ($catgoria) {
 
       $data2 = [
         'manyColumn' => 'plataforma_id',
-        'manyValue' => isset($_POST['platform']) ? $_POST['platform'] : [],
+        'manyValue' => isset($_POST['plataforma']) ? $_POST['plataforma'] : [],
         'searchColumn' => 'juego_id',
         'searchValue' => $id
       ];

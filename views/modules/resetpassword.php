@@ -1,7 +1,7 @@
 <?php
 $error = false;
 
-var_dump($_GET['url']);
+// var_dump($_GET['url']);
 
 $url = explode('/', $_GET['url']);
 $hash = $url[1];

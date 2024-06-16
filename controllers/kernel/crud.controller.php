@@ -31,6 +31,7 @@ class CrudController
     } else {
       $and = false;
     }
+
     $crudModel = new CrudModel($this->table, $this->mode);
     return $crudModel->getBy($data, $and);
   }
@@ -69,27 +70,11 @@ class CrudController
   public function updateManyManyArray($data)
   {
     $crudModel = new CrudModel($this->table, $this->mode);
-    // comparar los valores del array con los de la tabla, los que sobren se eliminan, los nuevos se insertanw, el resto sin modificaciones
 
-    $crudModel->deleteIn('juego_id', $data['searchValue']);
+    try {
+      $crudModel->deleteManyMany($data['searchColumn'], $data['searchValue']);
 
-    $registros = $crudModel->getByField(
-      [
-        'column' => $data['searchColumn'],
-        'value' => $data['searchValue']
-      ]
-    );
-
-    // Si los datos no existen en la tabla, se insertan
-    foreach ($data['manyValue'] as $value) {
-      $found = false;
-      foreach ($registros as $registro) {
-        if ($registro[$data['manyColumn']] == $value) {
-          $found = true;
-          break;
-        }
-      }
-      if (!$found) {
+      foreach ($data['manyValue'] as $key => $value) {
         $crudModel->create(
           [
             $data['searchColumn'] => $data['searchValue'],
@@ -97,6 +82,9 @@ class CrudController
           ]
         );
       }
+
+    } catch (\Throwable $th) {
+      return false;
     }
 
   }

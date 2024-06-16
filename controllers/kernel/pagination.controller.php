@@ -8,6 +8,7 @@ class paginationCtrl extends CrudController
   private $numPages;
   private $numProductos;
 
+  private $data;
   /**
    * Class constructor for the PaginationController.
    *
@@ -23,8 +24,9 @@ class paginationCtrl extends CrudController
     $this->porPag = $porPag;
     $this->page = $page;
 
+    $this->data = $datos;
 
-    $this->numProductos = count($this->getBy($datos));
+    $this->numProductos = count($this->getBy($datos, 'OR'));
 
     $this->numPages = (int) ceil(intval($this->numProductos) / intval($this->porPag));
     $this->page = $this->vlt_Page($page);
@@ -42,7 +44,7 @@ class paginationCtrl extends CrudController
     if ($page < 0) {
       $page = 0;
     } elseif ($page >= $this->numPages) {
-      $page = $this->numPages - 1;
+      $page = $this->numPages;
     }
     // var_dump($page);
 
@@ -56,7 +58,7 @@ class paginationCtrl extends CrudController
    */
   public function getLimit()
   {
-    $productoInicio = $this->page * $this->porPag;
+    $productoInicio = ($this->page * $this->porPag) - $this->porPag;
     // var_dump($this->page);
     $limit = " limit $productoInicio, $this->porPag ";
     return $limit;
@@ -80,11 +82,11 @@ class paginationCtrl extends CrudController
    */
   public function previus()
   {
-    if ($this->page == 0) {
+    if ($this->page == 1) {
       return 1;
     }
 
-    return $this->page;
+    return $this->page - 1;
   }
 
   /**
@@ -94,11 +96,11 @@ class paginationCtrl extends CrudController
    */
   public function next()
   {
-    if ($this->page + 2 > $this->numPages) {
-      return $this->page + 1;
+    if ($this->page + 1 > $this->numPages) {
+      return $this->page;
     }
 
-    return $this->page + 2;
+    return $this->page + 1;
   }
 
   /**
@@ -109,11 +111,26 @@ class paginationCtrl extends CrudController
   public function getPagination()
   {
     $html = '';
-    $html .= '<li class="page-item"><a class="page-link" href="?page=' . $this->previus() . '">Previous</a></li>';
-    for ($i = 0; $i < $this->numPages; $i++) {
-      $html .= '<li class="page-item"><a class="page-link" href="?page=' . ($i + 1) . '">' . ($i + 1) . '</a></li>';
+    $html .= '<li class="page-item"><a class="page-link" href="?page=' . $this->previus();
+
+    foreach ($this->data as $key => $value) {
+      $html .= '&search=' . str_replace('%', '', $value);
     }
-    $html .= '<li class="page-item"><a class="page-link" href="?page=' . $this->next() . '">Next</a></li>';
+    $html .= '">Previous</a></li>';
+
+
+    for ($i = 0; $i < $this->numPages; $i++) {
+      $html .= '<li class="page-item"><a class="page-link" href="?page=' . ($i + 1);
+      foreach ($this->data as $key => $value) {
+        $html .= '&search=' . str_replace('%', '', $value);
+      }
+      $html .= '">' . ($i + 1) . '</a></li>';
+    }
+    $html .= '<li class="page-item"><a class="page-link" href="?page=' . $this->next();
+    foreach ($this->data as $key => $value) {
+      $html .= '&search=' . str_replace('%', '', $value);
+    }
+    $html .= '">Next</a></li>';
     return $html;
   }
 }

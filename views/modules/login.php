@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if ($email != '' && $password != '') {
 
     $user = $userCtrl->login($email, $password);
-    var_dump($preuser);
+    // var_dump($preuser);
     if ($preuser['token'] == '') {
       if ($user) {
         $_SESSION['user'] = $user;

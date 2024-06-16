@@ -39,8 +39,8 @@
                     <div class="divider-custom-line"></div>
                   </div>
                   <!-- game Modal - Text-->
-                  <div>
-                    <p class="mb-4 text-secondary text-justify"><?= $game['Sinopsis'] ?></p>
+                  <div class="text-justify">
+                    <p class="mb-4 text-secondary"><?= $game['Sinopsis'] ?></p>
                   </div>
                 </div>
               </div>

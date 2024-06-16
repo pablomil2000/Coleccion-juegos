@@ -86,6 +86,7 @@ class CrudModel
 
     $stmt->execute($datos2);
 
+    // var_dump($stmt);
 
     return $stmt->fetchAll();
   }
@@ -142,7 +143,7 @@ class CrudModel
   public function deleteIn($column, $values, $in = true)
   {
     $buscar = '';
-    var_dump($column);
+    // var_dump($column);
     // array to string
     if (!empty($values)) {
       if (is_array($values)) {

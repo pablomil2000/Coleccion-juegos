@@ -53,11 +53,19 @@
                 $plataformasGame = $gameplataformaCtrl->getByField(
                   [
                     'column' => 'juego_id',
-                    'value' => $id
+                    'value' => $game['id']
                   ]
                 );
                 foreach ($plataformas as $key => $plataforma) {
+                  var_dump(in_array($plataforma['id'], array_column($plataformasGame, 'plataforma_id')));
+                  // Si la plataforma está en la lista de plataformas del juego, la seleccionamos 
                   if (in_array($plataforma['id'], array_column($plataformasGame, 'plataforma_id'))) {
+                    ?>
+                    <option style="color: black;" value="<?= $plataforma['id'] ?>" selected>
+                      <?= $plataforma['icono'] . $plataforma['nombre'] ?>
+                    </option>
+                    <?php
+                  } else {
                     ?>
                     <option style="color: black;" value="<?= $plataforma['id'] ?>">
                       <?= $plataforma['icono'] . $plataforma['nombre'] ?>
@@ -69,9 +77,6 @@
 
               </select>
             </div>
-
-
-
           </div>
           <div class="container">
             <div class="col-6"><label for="desarrolladores_id">desarrolladora</label>
