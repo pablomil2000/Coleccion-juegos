@@ -41,6 +41,22 @@
                   <!-- game Modal - Text-->
                   <div class="text-justify">
                     <p class="mb-4 text-secondary"><?= $game['Sinopsis'] ?></p>
+                    <div class="mb-4 text-secondary">
+                      <h4 class="text-secondary text-decoration-underline">Plataformas</h4>
+                      <div class="d-flex">
+                        <?php
+                        foreach ($plataformas as $plataforma) {
+                          ?>
+                          <div class="d-flex justify-content-center flex-column align-items-center col-2 p-2 rounded"
+                            style="min-width: fit-content;">
+                            <h5 class="text-secondary"><?= $plataforma['nombre'] ?></h5>
+                            <p aria-label="<?= $plataforma['nombre'] ?>"><?= $plataforma['icono'] ?></p>
+                          </div>
+                          <?php
+                        }
+                        ?>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

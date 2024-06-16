@@ -6,7 +6,16 @@ $companyCtrl = new CompanyCtrl('companies');
 $gamePlataformaCtrl = new gamePlataformaCtrl('juegos_plataformas');
 $plataformasCtrl = new plataformaCtrl('plataformas');
 
-// $plataformas = $plataformasCtrl->getByData('juego_id', $gamePlataformaCtrl->getByField(['column' => 'juego_id', 'value' => $game['id']])[0]['plataforma_id']);
+$paltaformasJuegos = $gamePlataformaCtrl->getByData('juego_id', $game['id']);
+
+$plataformas = [];
+foreach ($paltaformasJuegos as $plataforma) {
+  $plataformas[] = $plataformasCtrl->getByData('id', $plataforma['plataforma_id'])[0];
+}
+
+// var_dump($plataformas);
+
+// die();
 
 // var_dump($plataformas);
 include ('views/partials/gameCard.view.php');
