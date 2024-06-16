@@ -78,11 +78,14 @@ class CrudModel
       $sql = substr($sql, 0, -4);
     }
 
-
-    // var_dump($sql);
-
     $stmt = $this->conexion->prepare($sql);
+
+    foreach ($datos2 as $key => $value) {
+      $stmt->bindParam($key, $value);
+    }
+
     $stmt->execute($datos2);
+
 
     return $stmt->fetchAll();
   }
@@ -237,4 +240,14 @@ class CrudModel
       $this->createManyMany($data['searchColumn'], $data['searchValue'], $data['manyColumn'], $value);
     }
   }
+
+  public function rawSql($tabla, $where = '', $order = '', $limit = '')
+  {
+    $sql = "SELECT * FROM $tabla " . $where . ' ' . $order . ' ' . $limit;
+    // var_dump($sql);
+    $stmt = $this->conexion->query($sql);
+    return $stmt->fetchAll();
+  }
+
+
 }

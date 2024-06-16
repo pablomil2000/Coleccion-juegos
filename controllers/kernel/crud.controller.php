@@ -26,7 +26,6 @@ class CrudController
 
   public function getBy($data, $sep = 'and')
   {
-    // var_dump($data);
     if ($sep == 'and') {
       $and = true;
     } else {
@@ -102,4 +101,9 @@ class CrudController
 
   }
 
+  public function rawSql($where = '', $order = '', $limit = '')
+  {
+    $crudModel = new CrudModel($this->table, $this->mode);
+    return $crudModel->rawSql($this->table, $where, $order, $limit);
+  }
 }

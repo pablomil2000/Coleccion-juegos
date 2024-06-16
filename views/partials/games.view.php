@@ -34,7 +34,14 @@
       </div>
     </section>
   </div>
+  <!-- Paginacion -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <?= $pagination->getPagination() ?>
+    </ul>
+  </nav>
 </header>
+
 
 <script>
   // sort by data-nota

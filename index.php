@@ -7,6 +7,8 @@ require_once ("./controllers/kernel/route.controller.php"); //* Route controller
 require_once ("./controllers/kernel/crud.controller.php"); //* CRUD controller
 require_once ("./controllers/kernel/function.controller.php"); //* Function controller
 require_once ("./controllers/kernel/validate.controller.php"); //* Validate controller
+require_once ("./controllers/kernel/pagination.controller.php"); //* Pagination controller
+
 
 require_once ("./controllers/user.controller.php");
 require_once ("./controllers/country.controller.php");
