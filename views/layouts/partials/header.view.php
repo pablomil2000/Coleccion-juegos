@@ -14,7 +14,7 @@
       <span class="navbar-text">
         <ul class="navbar-nav me-auto">
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="<?= $GLOBALS['RouteCtrl']->domain ?>home">Home</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="<?= $GLOBALS['RouteCtrl']->domain ?>home">Inicio</a>
           </li>
           <?php
           if ($Funciones->hasLogin()) {

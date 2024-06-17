@@ -12,7 +12,7 @@
 
         if (isset($_SESSION['user']) && $_SESSION['user']['rol_id'] == '2') {
           ?>
-          <a class="btn btn-primary btn-xs" href="<?= $GLOBALS['RouteCtrl']->domain ?>new/game">Nuevo Juego</a>
+          <a class="btn btn-primary btn-xs" href="<?= $GLOBALS['RouteCtrl']->domain ?>new/game">NUEVO JUEGO</a>
           <?php
         }
         ?>
@@ -67,31 +67,6 @@
 
 
 <script>
-  // sort by data-nota
-  var $divs = $("div.card-game");
-  var ordered = $divs.sort(function (a, b) {
-    return $(a).data("nota") - $(b).data("nota")
-  });
-
-  function saveCollection (select, gameId) {
-
-    var collectionId = select.value;
-    var data = {
-      collection_id: collectionId,
-      game_id: gameId
-    };
-
-    $.ajax({
-      type: "POST",
-      url: "<?= $GLOBALS['RouteCtrl']->domain ?>api/updatecollection",
-      data: data,
-      success: function (response) {
-        console.log(response);
-      }
-    });
-
-  }
-
   // Justificar texto
   document.querySelectorAll('.text-justify').forEach((element) => {
     element.style.textAlign = 'justify';

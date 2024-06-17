@@ -5,7 +5,7 @@
     <img class="masthead-avatar mb-5" src="<?= $GLOBALS['RouteCtrl']->domain ?>/views/assets/img/homeLogo.png"
       alt="..." />
     <!-- Masthead Heading-->
-    <h1 class="masthead-heading text-uppercase mb-0">La buhardilla</h1>
+    <h1 class="masthead-heading text-uppercase mb-0">La Buhardilla</h1>
     <!-- Icon Divider-->
     <div class="divider-custom divider-light">
       <div class="divider-custom-line"></div>

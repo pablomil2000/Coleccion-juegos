@@ -1,4 +1,4 @@
-<!-- Games Item -->
+<!-- Game Item -->
 <div class="col-md-6 col-lg-2 mb-5" data-nota="<?= $game['Nota'] ?>">
   <div class="card-game game-item mx-auto" data-bs-toggle="modal" data-bs-target="#gameModal<?= $game['id'] ?>">
     <div class="game-item-caption d-flex align-items-center justify-content-center h-100 w-100">
@@ -77,7 +77,7 @@
                             <!-- nota -->
                             <div>
                               <div class="col-2 p-2 rounded " style="min-width: fit-content;">
-                                <h4 class="text-secondary">Desarrolladora</h4>
+                                <h4 class="text-secondary">Desarrolladora:</h4>
                                 <h5 class="text-secondary">
                                   <?= $companyCtrl->getBy(['id' => $game['desarrolladores_id']])[0]['nombre'] ?>
                                 </h5>
@@ -90,7 +90,7 @@
                             </div>
                             <div>
                               <div class="col-2 p-2 rounded" style="min-width: fit-content;">
-                                <h4 class="text-secondary">Distribuidores</h4>
+                                <h4 class="text-secondary">Distribuidora:</h4>
                                 <h5 class="text-secondary">
                                   <?= $companyCtrl->getBy(['id' => $game['distribuidora_id']])[0]['nombre'] ?>
                                 </h5>
@@ -137,7 +137,7 @@
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseThree">
-                        Spoilers alert
+                        Comentarios de los jugadores (SPOILERS)
                       </button>
                     </h2>
                     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
@@ -154,7 +154,7 @@
               </button>
 
               <?php
-              if ($_SESSION['user']['rol_id'] === 2) {
+              if ($_SESSION['user']['lvl'] >= 50) {
                 ?>
                 <a class="btn btn-primary" href="<?= $GLOBALS['RouteCtrl']->domain ?>edit/game/<?= $game['id'] ?>">
                   <i class="fa-solid fa-pencil"></i> Editar

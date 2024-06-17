@@ -3,6 +3,7 @@
 $Funciones = new FunctionCtrl();
 $Validate = new ValidateCtrl();
 $userCtrl = new userCtrl('users');
+$rolCtrl = new RolCtrl('rols');
 
 $Funciones->isGuest();
 
@@ -20,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($preuser['token'] == '') {
       if ($user) {
         $userCtrl->update($user['id'], ['lastLogin' => date('Y-m-d H:i:s')]);
+        $role = $rolCtrl->getBy(['id' => $user['rol_id']])[0];
+        $user['lvl'] = $role['lv'];
         $_SESSION['user'] = $user;
         header('Location: ./');
       } else {

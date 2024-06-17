@@ -6,13 +6,13 @@
     <section class="page-section game" id="game">
       <div class="container">
         <!-- Games Section Heading-->
-        <h2 class="page-section-heading text-uppercase text-secondary">Compañias</h2>
+        <h2 class="page-section-heading text-uppercase text-secondary">Compañías</h2>
         <!-- button new game -->
         <?php
 
-        if (isset($_SESSION['user']) && $_SESSION['user']['rol_id'] == '2') {
+        if (isset($_SESSION['user']) && $_SESSION['user']['lvl'] >= '50') {
           ?>
-          <a class="btn btn-primary btn-xs" href="<?= $GLOBALS['RouteCtrl']->domain ?>new/company">Nueva compañia</a>
+          <a class="btn btn-primary btn-xs" href="<?= $GLOBALS['RouteCtrl']->domain ?>new/company">NUEVA COMPAÑÍA</a>
           <?php
         }
         ?>

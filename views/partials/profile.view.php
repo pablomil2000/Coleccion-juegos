@@ -44,7 +44,7 @@
     <section class="col-10 page-section profile" id="profile">
       <div class="container">
         <!-- Profile Section Heading-->
-        <h2 class="page-section-heading text-uppercase text-secondary">Mis juegos</h2>
+        <h2 class="page-section-heading text-uppercase text-secondary">Mis Títulos</h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
           <div class="divider-custom-line"></div>
@@ -54,13 +54,10 @@
 
         <!-- Profile Grid Items-->
         <div class="card-container row justify-content-center">
-
-          <!-- games cards -->
           <?php
-          foreach ($mygames as $key => $mygame) {
+          foreach ($mygames as $mygame) {
+            // var_dump($game);
             include ('views/modules/gameCard2.php');
-            ?>
-            <?php
           }
           ?>
         </div>

@@ -134,7 +134,7 @@
               </button>
 
               <?php
-              if ($_SESSION['user']['rol_id'] === 2) {
+              if ($_SESSION['user']['lvl'] >= 50) {
                 ?>
                 <a class="btn btn-primary" href="<?= $GLOBALS['RouteCtrl']->domain ?>edit/company/<?= $company['id'] ?>">
                   <i class="fa-solid fa-pencil"></i> Editar

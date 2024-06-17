@@ -13,7 +13,7 @@
     <form action="" method="post" class="container justify-content-center col-12" enctype="multipart/form-data">
       <div class="col-12 row m-3 justify-content-center">
         <div class="col-6 ">
-          <label for="title" class="form-label">Titulo</label>
+          <label for="title" class="form-label">Título</label>
           <input type="text" class="form-control" id="title" aria-describedby="titleHelper" style="width: 100%;"
             name="titulo" value="<?= $Funciones->old('title') ?>">
         </div>
@@ -21,7 +21,7 @@
 
       <div class="col-12 row m-3 justify-content-center">
         <div class="col-4">
-          <label for="title" class="form-label">Portada</label>
+          <label for="title" class="form-label">Carátula</label>
           <div class="container m-3">
             <img class="img-fluid rounded mb-5 min-vh-10" src="#" alt="" id="preview">
           </div>
@@ -30,13 +30,13 @@
         </div>
         <div class="col-4 container">
           <div class="col-6 m-5">
-            <label for="title" class="form-label">Fecha de lanzamiento</label>
+            <label for="title" class="form-label">Fecha de lanzamiento:</label>
             <input type="date" class="form-control" id="title" aria-describedby="titleHelper" style="width: 100%;"
               value="<?= date('Y-m-d') ?>" name="salida">
           </div>
 
           <div class="col-6 m-5">
-            <label for="title" class="form-label">Nota:</label>
+            <label for="title" class="form-label">Nota de Metacritic:</label>
             <input type="number" class="form-control" id="title" aria-describedby="titleHelper" style="width: 100%;"
               value="0" name="nota" min="0" max="100">
           </div>
@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="container">
-            <div class="col-6"><label for="desarrolladores_id">desarrolladora</label>
+            <div class="col-6"><label for="desarrolladores_id">Desarrolladora:</label>
               <select name="desarrolladores_id" class="form-select">
                 <option value="0" selected>Otra</option>
                 <?php
@@ -73,7 +73,7 @@
 
               </select>
             </div>
-            <div class="col-6"><label for="distribuidora_id">Distribuidora</label>
+            <div class="col-6"><label for="distribuidora_id">Distribuidora:</label>
               <select name="distribuidora_id" class="form-select">
                 <option value="0" selected>Otra</option>
                 <?php
@@ -104,7 +104,7 @@
           <input type="text" class="form-control" id="title" aria-describedby="titleHelper" style="width: 100%;"
             name="trailer" value="<?= $Funciones->old('trailer') ?>" placeholder="WYxvjBsAZog">
           <!-- helper -->
-          <div id="titleHelper" class="form-text">Introduce el código del trailer de youtube. (WYxvjBsAZog)</div>
+          <div id="titleHelper" class="form-text">Introduce el código del trailer de YouTube. (Ejemplo: WYxvjBsAZog)</div>
         </div>
       </div>
 
