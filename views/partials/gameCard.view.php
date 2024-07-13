@@ -1,10 +1,199 @@
 <!-- Game Item -->
 <div class="col-md-6 col-lg-2 mb-5" data-nota="<?= $game['Nota'] ?>">
-  <div class="card-game game-item mx-auto">
+  <div class="card-game game-item mx-auto" data-bs-toggle="modal" data-bs-target="#gameModal<?= $game['id'] ?>">
     <div class="game-item-caption d-flex align-items-center justify-content-center h-100 w-100">
       <div class="game-item-caption-content text-center"><?= $game['titulo'] ?></div>
     </div>
-    <img class="img-fluid min-vh-10" loading="lazy"
+    <img class="img-fluid min-vh-10 lazyload"
       src="<?= $Funciones->helperImage($game['Portada'], '/views/assets/img/games/' . $game['Portada']) ?>" alt="..." />
+  </div>
+</div>
+
+<div class="game-modal modal fade" id="gameModal<?= $game['id'] ?>" tabindex="-1"
+  aria-labelledby="gameModal<?= $game['id'] ?>" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+          aria-label="Close"></button></div>
+      <div class="modal-body text-center pb-5">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <!-- game Modal - Title-->
+              <div class="d-flex">
+                <div class="col-4 m-2">
+                  <!-- game Modal - Image-->
+                  <img class="img-fluid rounded mb-5 min-vh-10" loading="lazy"
+                    src="<?= $Funciones->helperImage($game['Portada'], '/views/assets/img/games/' . $game['Portada']) ?>"
+                    alt="..." style="max-height: 40vh" />
+                </div>
+                <div class="col-8 m-2 text-secondary">
+                  <!-- game Modal - Titel-->
+                  <h2 class="game-modal-title text-secondary text-uppercase mb-0"><?= $game['titulo'] ?></h2>
+                  <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+
+                    <h5 class="game-modal-subtitle text-secondary text-uppercase mb-0">
+                      <?= $Funciones->dateFormat($game['salida'], 'Y') ?>
+                    </h5>
+                    <div class="divider-custom-line"></div>
+                  </div>
+                  <!-- game Modal - Text-->
+                  <div class="text-justify">
+                    <p class="mb-4 text-secondary"><?= $game['Sinopsis'] ?></p>
+                    <div class="mb-4 text-secondary">
+                      <h4 class="text-secondary text-decoration-underline">Plataformas</h4>
+                      <div class="d-flex">
+                        <?php
+                        foreach ($plataformas as $plataforma) {
+                          ?>
+                          <div class="d-flex justify-content-center flex-column align-items-center col-2 p-2 rounded"
+                            style="min-width: fit-content;">
+                            <h5 class="text-secondary"><?= $plataforma['nombre'] ?></h5>
+                            <p aria-label="<?= $plataforma['nombre'] ?>"><?= $plataforma['icono'] ?></p>
+                          </div>
+                          <?php
+                        }
+                        ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 m-2">
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        Informacion del juego
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                      <div class="accordion-body">
+                        <div class="d-flex">
+                          <div class="col-12 d-flex justify-content-between">
+                            <!-- nota -->
+                            <div>
+                              <div class="col-2 p-2 rounded " style="min-width: fit-content;">
+                                <h4 class="text-secondary">Desarrolladora:</h4>
+                                <h5 class="text-secondary">
+                                  <?= $companyCtrl->getBy(['id' => $game['desarrolladores_id']])[0]['nombre'] ?>
+                                </h5>
+                              </div>
+                            </div>
+                            <div class="d-flex">
+                              <?php
+                              include ('views/partials/nota.view.php')
+                                ?>
+                            </div>
+                            <div>
+                              <div class="col-2 p-2 rounded" style="min-width: fit-content;">
+                                <h4 class="text-secondary">Distribuidora:</h4>
+                                <h5 class="text-secondary">
+                                  <?= $companyCtrl->getBy(['id' => $game['distribuidora_id']])[0]['nombre'] ?>
+                                </h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTwo">
+                        Trailer
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                      <div class="accordion-body">
+                        <?php
+
+                        if ($game['trailer_code'] != '') {
+                          ?>
+                          <iframe width="560" height="315" loading="lazy"
+                            src="https://www.youtube.com/embed/<?= $game['trailer_code'] ?>?si=_2LD9KMoVxzKu4rU"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                          <?php
+                        } else {
+                          ?>
+                          <div class="alert alert-danger" role="alert">
+                            No hay trailer disponible
+                          </div>
+                          <?php
+                        }
+                        ?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseThree">
+                        Comentarios de los jugadores (SPOILERS)
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                      <div class="accordion-body">
+                        Aqui van los comentarios de los usuarios
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Icon Divider-->
+              <button class="btn btn-primary" data-bs-dismiss="modal">
+                <i class="fa-solid fa-arrow-left"></i> Volver
+              </button>
+
+              <?php
+              if ($_SESSION['user']['lvl'] >= 50) {
+                ?>
+                <a class="btn btn-primary" href="<?= $GLOBALS['RouteCtrl']->domain ?>edit/game/<?= $game['id'] ?>">
+                  <i class="fa-solid fa-pencil"></i> Editar
+                </a>
+                <?php
+              }
+              ?>
+
+              <div class="mt-3">
+                <form action="" method="post" class="d-flex justify-content-center">
+                  <input type="hidden" value="<?= $game['id'] ?>" name="game_id">
+                  <select name="plataforma_id" name="plataforma" class="form-select" style="max-width: max-content;">
+                    <?php
+                    $plataformasJuego = $gamePlataformaCtrl->getByData('juego_id', $game['id']);
+
+                    if (count($plataformasJuego) === 0) {
+                      ?>
+                      <option value="0">No hay plataformas disponibles</option>
+                      <?php
+                    } else {
+                      foreach ($plataformasJuego as $key => $plataforma) {
+                        $plataforma = $plataformasCtrl->getBy(['id' => $plataforma['plataforma_id']])[0];
+                        // var_dump($plataforma);
+                        ?>
+                        <option value="<?= $plataforma['id'] ?>"><?= $plataforma['nombre'] ?></option>
+                        <?php
+                      }
+                    }
+                    ?>
+                  </select>
+                  <button role="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-gamepad"></i> Lo tengo!!
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

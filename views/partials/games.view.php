@@ -49,7 +49,7 @@
         if (count($games) > 0) {
           ?>
           <!-- Games Grid Items-->
-          <div class="card-container row justify-content-center">
+          <div class="card-container row justify-content-center" style="width: 60vw;">
             <?php
             foreach ($games as $game) {
               // var_dump($game);

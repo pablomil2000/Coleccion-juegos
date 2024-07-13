@@ -18,4 +18,4 @@ foreach ($paltaformasJuegos as $plataforma) {
 // die();
 
 // var_dump($plataformas);
-include ('views/partials/gameCard.view.php');
+include ('views/partials/gameCard3.view.php');

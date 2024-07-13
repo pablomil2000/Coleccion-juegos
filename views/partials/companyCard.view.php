@@ -6,7 +6,7 @@
         <?= $company['nombre'] ?>
       </div>
     </div>
-    <img class="min-vh-10 img-fluid"
+    <img class="min-vh-10 img-fluid  lazyload"
       src="<?= $Funciones->helperImage($company['logo'], 'views/assets/img/companies/' . $company['logo']) ?>"
       alt="<?= $company['nombre'] ?>" />
   </div>
