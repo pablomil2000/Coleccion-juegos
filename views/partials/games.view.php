@@ -45,24 +45,36 @@
           <div class="divider-custom-icon"><i class="fa-solid fa-gamepad"></i></div>
           <div class="divider-custom-line"></div>
         </div>
-        <!-- Games Grid Items-->
-        <div class="card-container row justify-content-center">
-          <?php
-          foreach ($games as $game) {
-            // var_dump($game);
-            include ('views/modules/gameCard.php');
-          }
+        <?php
+        if (count($games) > 0) {
           ?>
-        </div>
+          <!-- Games Grid Items-->
+          <div class="card-container row justify-content-center">
+            <?php
+            foreach ($games as $game) {
+              // var_dump($game);
+              include ('views/modules/gameCard.php');
+            }
+            ?>
+          </div>
+          <!-- Paginacion -->
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <?= $pagination->getPagination() ?>
+            </ul>
+          </nav>
+          <?php
+        } else {
+          ?>
+          <div class="alert alert-warning" role="alert">
+            No se encontraron resultados
+          </div>
+          <?php
+        }
+        ?>
       </div>
     </section>
   </div>
-  <!-- Paginacion -->
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <?= $pagination->getPagination() ?>
-    </ul>
-  </nav>
 </header>
 
 

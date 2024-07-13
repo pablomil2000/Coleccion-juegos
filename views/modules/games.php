@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $plataformas = $plataformaCtrl->getAll();
 
-// TODO legacy game loader
+//-- legacy game loader
 // $games = $gameCtrl->order(
 //   [
 //     'column' => 'titulo',
@@ -71,11 +71,12 @@ $plataformas = $plataformaCtrl->getAll();
 //   ]
 // );
 
-// var_dump($pagination->getLimit());
+
 try {
   $games = $pagination->rawSql('where titulo like"' . $search . '"', 'ORDER BY titulo ASC', $pagination->getLimit());
 } catch (\Throwable $th) {
-  header('Location: ' . $GLOBALS['RouteCtrl']->domain . '404');
+  // header('Location: ' . $GLOBALS['RouteCtrl']->domain . '404');
+  $games = [];
 }
 
 // eliminar primer y ultimo caracter
