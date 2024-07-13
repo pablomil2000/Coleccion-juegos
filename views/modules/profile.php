@@ -4,7 +4,9 @@ $Funciones = new FunctionCtrl();
 $userCtrl = new UserCtrl('users');
 $mygamesCtrl = new UserCtrl('mygames');
 $plataformaCtrl = new plataformaCtrl('plataformas');
-$gamesCtrl = new UserCtrl('games');
+$gamesCtrl = new gameCtrl('games');
+$rolesCtrl = new UserCtrl('rols');
+
 $Funciones->isLogin();
 
 $url = explode('/', $_GET['url']);
@@ -21,10 +23,18 @@ $user = $userCtrl->getByField([
   'value' => $id
 ]);
 
+$role = $rolesCtrl->getByField([
+  'column' => 'id',
+  'value' => $user[0]['rol_id']
+]);
+
 $mygames = $mygamesCtrl->getByField([
   'column' => 'player_id',
   'value' => $id
 ]);
+
+// $mygames = $mygamesCtrl->raw("SELECT * FROM mygames WHERE player_id = $id GROUP BY game_id");
+
 
 // var_dump($user);
 

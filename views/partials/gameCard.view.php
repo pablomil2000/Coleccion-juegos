@@ -43,7 +43,7 @@
                     <p class="mb-4 text-secondary"><?= $game['Sinopsis'] ?></p>
                     <div class="mb-4 text-secondary">
                       <h4 class="text-secondary text-decoration-underline">Plataformas</h4>
-                      <div class="card-container row ">
+                      <div class="card-container row justify-content-center">
                         <?php
                         foreach ($plataformas as $plataforma) {
                           ?>
@@ -177,10 +177,18 @@
                     } else {
                       foreach ($plataformasJuego as $key => $plataforma) {
                         $plataforma = $plataformasCtrl->getBy(['id' => $plataforma['plataforma_id']])[0];
-                        // var_dump($plataforma);
-                        ?>
-                        <option value="<?= $plataforma['id'] ?>"><?= $plataforma['nombre'] ?></option>
-                        <?php
+
+                        $mygames = $mygamesCtrl->getBy([
+                          'player_id' => $_SESSION['user']['id'],
+                          'game_id' => $game['id'],
+                          'plataforma_id' => $plataforma['id']
+                        ]);
+
+                        if (count($mygames) === 0) {
+                          ?>
+                          <option value="<?= $plataforma['id'] ?>"><?= $plataforma['nombre'] ?></option>
+                          <?php
+                        }
                       }
                     }
                     ?>

@@ -21,7 +21,7 @@
             <div class="card-profile-body">
               <h3 class="card-profile-title">Nombre: <?= $user['nombre'] ?></h3>
               <!-- <p class="card-profile-text">Email: <?= $user['email'] ?></p> -->
-              <p class="card-profile-text">Rol: <?= $user['rol_id'] ?></p>
+              <p class="card-profile-text">Rol: <?= $role[0]['name'] ?></p>
               <!-- <p class="card-profile-text">Fecha de creación: <?= $user['created_at'] ?></p> -->
               <!-- <p class="card-profile-text">Fecha de actualización: <?= $user['updated_at'] ?></p> -->
             </div>
