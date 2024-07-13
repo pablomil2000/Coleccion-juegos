@@ -1,6 +1,6 @@
 <!-- Games Item -->
 <div class="col-md-6 col-lg-3 mb-5">
-  <div class="card-game game-item mx-auto" data-bs-toggle="modal" data-bs-target="#gameModal<?= $company['id'] ?>">
+  <div class="card-game game-item mx-auto" data-bs-toggle="modal" data-bs-target="#companyModal<?= $company['id'] ?>">
     <div class="game-item-caption d-flex align-items-center justify-content-center h-100 w-100">
       <div class="game-item-caption-content text-center">
         <?= $company['nombre'] ?>
@@ -12,8 +12,8 @@
   </div>
 </div>
 
-<div class="game-modal modal fade" id="gameModal<?= $company['id'] ?>" tabindex="-1"
-  aria-labelledby="gameModal<?= $company['id'] ?>" aria-hidden="true">
+<div class="game-modal modal fade" id="companyModal<?= $company['id'] ?>" tabindex="-1"
+  aria-labelledby="companyModal<?= $company['id'] ?>" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
@@ -103,12 +103,22 @@
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseTwo">
-                        Historia
+                        Juegos de la compañia
                       </button>
                     </h2>
                     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                       <div class="accordion-body">
-                        <?= $company['historia'] ?>
+                        <div class="card-container row justify-content-center">
+
+                          <?php
+                          $games = $gameCtrl->getBy(['desarrolladores_id' => $company['id'], 'distribuidora_id' => $company['id']], 'OR');
+                          // var_dump($games);
+                          foreach ($games as $game) {
+                            require ('views/modules/gameCard3.php');
+                          }
+                          ?>
+                        </div>
+
                       </div>
                     </div>
                   </div>
