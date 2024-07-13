@@ -43,7 +43,7 @@
                     <p class="mb-4 text-secondary"><?= $game['Sinopsis'] ?></p>
                     <div class="mb-4 text-secondary">
                       <h4 class="text-secondary text-decoration-underline">Plataformas</h4>
-                      <div class="d-flex">
+                      <div class="card-container row ">
                         <?php
                         foreach ($plataformas as $plataforma) {
                           ?>
