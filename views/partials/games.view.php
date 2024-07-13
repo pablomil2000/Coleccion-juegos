@@ -24,22 +24,20 @@
         </div>
 
         <form method="get">
-          <div class="row">
+          <div class="row col-12 justify-content-center">
             <div class="col-md-4">
               <div class="form-group">
                 <!-- Search -->
-                <input type="text" class="form-control" name="search" placeholder="Buscar..." value="<?= $search ?>">
-
               </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group mt-4">
-                <button type="submit" class="btn btn-primary text-justify">Filtrar</button>
+              <div class="input-group d-flex col-12">
+                <input id="search-input" type="text" class="form-control" name="search" placeholder="Buscar..."
+                  value="<?= $search ?>" style="min-width: 300px;">
+                <button class=" input-group-text" id="search-button" role="search"><i
+                    class="fas fa-search"></i></button>
               </div>
             </div>
           </div>
         </form>
-
         <div class="divider-custom">
           <div class="divider-custom-line"></div>
           <div class="divider-custom-icon"><i class="fa-solid fa-gamepad"></i></div>
