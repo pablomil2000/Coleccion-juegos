@@ -94,4 +94,10 @@ class CrudController
     $crudModel = new CrudModel($this->table, $this->mode);
     return $crudModel->rawSql($this->table, $where, $order, $limit);
   }
+
+  public function raw($sql)
+  {
+    $crudModel = new CrudModel($this->table, $this->mode);
+    return $crudModel->raw($sql);
+  }
 }

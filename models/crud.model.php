@@ -250,5 +250,12 @@ class CrudModel
     return $stmt->fetchAll();
   }
 
+  public function raw($sql)
+  {
+    var_dump($sql);
+    $stmt = $this->conexion->query($sql);
+    return $stmt->fetchAll();
+  }
+
 
 }

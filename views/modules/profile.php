@@ -2,7 +2,7 @@
 
 $Funciones = new FunctionCtrl();
 $userCtrl = new UserCtrl('users');
-$mygamesCtrl = new UserCtrl('mygames');
+$mygamesCtrl = new myGamesCtrl('mygames');
 $plataformaCtrl = new plataformaCtrl('plataformas');
 $gamesCtrl = new gameCtrl('games');
 $rolesCtrl = new UserCtrl('rols');
@@ -28,12 +28,13 @@ $role = $rolesCtrl->getByField([
   'value' => $user[0]['rol_id']
 ]);
 
-$mygames = $mygamesCtrl->getByField([
-  'column' => 'player_id',
-  'value' => $id
-]);
+// $mygames = $mygamesCtrl->getByField([
+//   'column' => 'player_id',
+//   'value' => $id
+// ]);
 
-// $mygames = $mygamesCtrl->raw("SELECT * FROM mygames WHERE player_id = $id GROUP BY game_id");
+// mygames group by game_id
+$mygames = $mygamesCtrl->raw("SELECT game_id, MAX(date) as max_date ,MAX(plataforma_id) as plataforma_id FROM mygames WHERE player_id = '1' GROUP BY game_id");
 
 
 // var_dump($user);
