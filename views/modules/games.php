@@ -1,3 +1,4 @@
+<script src="<?= $GLOBALS['RouteCtrl']->domain ?>/views/assets/js/scripts_game.js"></script>
 <?php
 
 $FuncionesCtrl = new FunctionCtrl();
@@ -83,3 +84,4 @@ try {
 $search = str_replace('%', '', $search);
 
 include_once ('views/partials/games.view.php');
+include ('views/partials/gamemodal.view.php');

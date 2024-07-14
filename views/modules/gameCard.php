@@ -16,9 +16,4 @@ foreach ($paltaformasJuegos as $plataforma) {
 
 }
 
-// var_dump($plataformas);
-
-// die();
-
-// var_dump($plataformas);
 include ('views/partials/gameCard.view.php');

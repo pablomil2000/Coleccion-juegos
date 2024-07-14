@@ -19,8 +19,6 @@ require_once ('./views/layouts/modules/head.php');
     'edit',
     'new',
     'profile',
-    'collections',
-    'api',
     'resetpassword'
   );
 

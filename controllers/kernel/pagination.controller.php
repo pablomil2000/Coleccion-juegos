@@ -111,6 +111,7 @@ class paginationCtrl extends CrudController
   public function getPagination()
   {
     $html = '';
+    $html .= '<div class="d-flex page-item">';
     $html .= '<li class="page-item"><a class="page-link" href="?page=' . $this->previus();
 
     foreach ($this->data as $key => $value) {
@@ -120,7 +121,11 @@ class paginationCtrl extends CrudController
 
 
     for ($i = 0; $i < $this->numPages; $i++) {
-      $html .= '<li class="page-item"><a class="page-link" href="?page=' . ($i + 1);
+      $html .= '<li class="page-item';
+      if ($this->page == $i + 1) {
+        $html .= ' active " style="box-shadow:10px #2c3e50;';
+      }
+      $html .= '"><a class="page-link" href="?page=' . ($i + 1);
       foreach ($this->data as $key => $value) {
         $html .= '&search=' . str_replace('%', '', $value);
       }
@@ -131,6 +136,7 @@ class paginationCtrl extends CrudController
       $html .= '&search=' . str_replace('%', '', $value);
     }
     $html .= '">Next</a></li>';
+
     return $html;
   }
 }
