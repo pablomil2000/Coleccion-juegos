@@ -31,7 +31,7 @@
                     <p class="mb-4 text-secondary" id="game-modal-sinopsis">Sinopsis</p>
                     <div class="mb-4 text-secondary">
                       <h4 class="text-secondary text-decoration-underline">Plataformas</h4>
-                      <div class="card-container row justify-content-center">
+                      <div class="card-container-platform row d-flex justify-content-center">
                         <!-- Plataformas -->
                       </div>
                     </div>
@@ -149,13 +149,11 @@
       let id = $(this).data('game');
       let url = $('#game-modal-img').attr('src');
       let ytUrl = 'https://www.youtube.com/embed/'
-      console.log(url);
-      // let sinopsis = $(this).data('sinopsis');
+      // console.log(url);
 
       let game = games[id];
       let developer = company[game.desarrolladores_id];
       let distribuidora = company[game.distribuidora_id];
-      // console.log(compania);
 
       // set elements to modal
       $('#game-modal-title').text(game.titulo);
@@ -169,10 +167,24 @@
       if (game.trailer_code == '') {
         // replace iframe with a message
         $('#game-modal-trailer').replaceWith('<h4 class="text-secondary">No hay trailer disponible</h4>');
-
       }
 
-      // console.table(game);
+      // set plataformas
+      console.log(platformGame[id]);
+
+      let plataformas = platformGame[id];
+      let html = '';
+
+      plataformas.forEach(plataforma => {
+        html += '<div class="card m-2 p-2 col-3 rounded text-center" style="min-width: fit-content;">';
+        html += '<h5 class="text-secondary">' + plataforma.nombre + '</h5>';
+        html += plataforma.icono
+        html += '</div>';
+      });
+
+      $('.card-container-platform').html(html);
+
+
 
     });
   });

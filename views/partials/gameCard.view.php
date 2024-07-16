@@ -13,4 +13,5 @@
 
 <script>
   saveGame(<?= json_encode($game) ?>);
+  savePlatformsGames(<?= $game['id'] ?>, <?= json_encode($plataformas) ?>);
 </script>

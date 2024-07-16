@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $companies = $companyCtrl->getAll();
 $plataformas = $plataformaCtrl->getAll();
-
+$plataformas2 = $plataformas;
 //-- legacy game loader
 // $games = $gameCtrl->order(
 //   [
