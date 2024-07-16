@@ -12,5 +12,5 @@
 </div>
 
 <script>
-  saveSinopsis(<?= json_encode($game) ?>);
+  saveGame(<?= json_encode($game) ?>);
 </script>

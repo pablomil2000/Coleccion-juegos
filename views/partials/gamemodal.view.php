@@ -91,6 +91,7 @@
                     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                       <div class="accordion-body">
                         <!-- Trailer -->
+
                         <iframe id="game-modal-trailer" width="560" height="315" src="" title="YouTube video player"
                           frameborder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -151,18 +152,28 @@
       console.log(url);
       // let sinopsis = $(this).data('sinopsis');
 
-      let game = sinopsis[id];
+      let game = games[id];
+      let developer = company[game.desarrolladores_id];
+      let distribuidora = company[game.distribuidora_id];
+      // console.log(compania);
 
       // set elements to modal
       $('#game-modal-title').text(game.titulo);
       $('#game-modal-img').attr('src', url + 'views/assets/img/games/' + game.Portada);
       $('#game-modal-nota').text(game.nota);
       $('#game-modal-sinopsis').html(game.Sinopsis);
-      $('#game-modal-developer').text(game.desarrolladores_id);
-      $('#game-modal-distribuidora').text(game.distribuidora_id);
-      $('#game-modal-trailer').attr('src', ytUrl + game.trailer_code);
+      $('#game-modal-developer').text(developer.nombre);
+      $('#game-modal-distribuidora').text(distribuidora.nombre);
 
-      console.table(game);
+      $('#game-modal-trailer').attr('src', ytUrl + game.trailer_code);
+      if (game.trailer_code == '') {
+        // replace iframe with a message
+        $('#game-modal-trailer').replaceWith('<h4 class="text-secondary">No hay trailer disponible</h4>');
+
+      }
+
+      // console.table(game);
+
     });
   });
 

@@ -24,6 +24,7 @@ $Validate = new ValidateCtrl();
 $plataformaCtrl = new plataformaCtrl('plataformas');
 
 $gameCtrl = new gameCtrl('games');
+$companyCtrl = new companyCtrl('companies');
 $mygames = new myGamesCtrl('mygames');
 $pagination = new paginationCtrl('games', 12, $page, ['titulo' => $search]);
 $Funciones->isLogin();
@@ -62,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 }
 
+$companies = $companyCtrl->getAll();
 $plataformas = $plataformaCtrl->getAll();
 
 //-- legacy game loader

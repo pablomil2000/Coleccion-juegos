@@ -77,6 +77,7 @@
 
 
 <script>
+  saveCompanies(<?= json_encode($companies) ?>);
   // Justificar texto
   document.querySelectorAll('.text-justify').forEach((element) => {
     element.style.textAlign = 'justify';
