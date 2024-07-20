@@ -8,32 +8,37 @@
           <div class="row justify-content-center">
             <div class="col-lg-10">
               <!-- game Modal - Title-->
-              <div class="d-flex">
-                <div class="col-4 m-2">
-                  <!-- game Modal - Image-->
-                  <img class="img-fluid rounded mb-5 min-vh-10" id="game-modal-img" loading="lazy"
-                    src="<?= $GLOBALS['RouteCtrl']->domain ?>" alt="..." style="max-height: 40vh" />
-                </div>
-                <div class="col-8 m-2 text-secondary">
-                  <!-- game Modal - Titel-->
-                  <h2 class="game-modal-title text-secondary text-uppercase mb-0" id="game-modal-title">Titulo</h2>
-                  <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-
-                    <!-- game Modal - release date -->
-                    <h5 class="game-modal-subtitle text-secondary text-uppercase mb-0">
-                      <!-- Release date -->
-                    </h5>
-                    <div class="divider-custom-line"></div>
+              <div class="container">
+                <div class="row d-flex justify-content-center">
+                  <div class="col-12 col-lg-4">
+                    <!-- game Modal - Image-->
+                    <img class="img-fluid rounded mb-5 min-vh-10" id="game-modal-img" loading="lazy"
+                      src="<?= $GLOBALS['RouteCtrl']->domain ?>" alt="..." style="max-height: 60vh" />
                   </div>
-                  <!-- game Modal - Text-->
-                  <div class="text-justify">
-                    <p class="mb-4 text-secondary" id="game-modal-sinopsis">Sinopsis</p>
-                    <div class="mb-4 text-secondary">
-                      <h4 class="text-secondary text-decoration-underline">Plataformas</h4>
-                      <div class="card-container-platform row d-flex justify-content-center">
-                        <!-- Plataformas -->
-                      </div>
+                  <div class="col-8 text-secondary">
+                    <!-- game Modal - Titel-->
+                    <h2 class="game-modal-title text-secondary text-uppercase mb-0" id="game-modal-title">Titulo</h2>
+                    <div class="divider-custom">
+                      <div class="divider-custom-line"></div>
+
+                      <!-- game Modal - release date -->
+                      <h5 class="game-modal-subtitle text-secondary text-uppercase mb-0">
+                        <!-- Release date -->
+                      </h5>
+                      <div class="divider-custom-line"></div>
+                    </div>
+                    <!-- game Modal - Text-->
+                    <div class="text-justify">
+                      <p class="mb-4 text-secondary" id="game-modal-sinopsis">Sinopsis</p>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="mb-4 text-secondary">
+                    <h4 class="text-secondary text-decoration-underline">Plataformas</h4>
+                    <div class="card-container-platform row d-flex justify-content-center">
+                      <!-- Plataformas -->
                     </div>
                   </div>
                 </div>
@@ -176,15 +181,14 @@
       let html = '';
 
       plataformas.forEach(plataforma => {
-        html += '<div class="card m-2 p-2 col-3 rounded text-center" style="min-width: fit-content;">';
-        html += '<h5 class="text-secondary">' + plataforma.nombre + '</h5>';
+
+        html += '<div class="card m-1 col-12 col-md-4 col-lg-3 p-1 rounded text-center">';
+        html += '<h5 class="text-secondary" style="text-wrap: pretty;">' + plataforma.nombre + '</h5>';
         html += plataforma.icono
         html += '</div>';
       });
 
       $('.card-container-platform').html(html);
-
-
 
     });
   });
